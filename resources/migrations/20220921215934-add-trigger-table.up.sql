@@ -10,3 +10,5 @@ copy trigger(story_id, description)
 from '${data.triggers}'
 delimiter ','
 csv header;
+--;;
+create index search_index on trigger using gin (search_vector);
