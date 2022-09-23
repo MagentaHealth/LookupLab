@@ -1,0 +1,84 @@
+story_id,description
+34,I want physician billing numbers
+3,I want to book an appointment
+3,I want to book an urgent appointment
+3,I want to book an appointment with the clinic nurse
+3,I want my physician to call me
+27,I want to clarify the details of a prescription
+27,I want to clarify a requisition
+4,I want to update my contact information
+4,I want to inform you of my pronouns
+4,I want to update my name/preferred name
+5,I want to deregister from my physician
+6,I want details of my exisiting referral to a specialist
+6,I want to cancel my existing referral to a specialist
+6,I want to reschedule my appointment with a specialist
+6,I want to change my referral to a different specialist
+6,I want you to re-send my referral / specialist did not recieve the referral
+6,I want additional information related to an existing referral
+6,I want to follow up the status of an existing referral
+1,I want information about physicians
+1,I want directions to a clinic
+1,I want parking information
+1,I want to know clinic hours
+1,I want to bring my service animal
+1,I want to know what languages are spoken
+7,I want to follow up a recent result
+7,I want to follow up on a previously discussed medical concern
+7,I want to respond to my physician's questions
+8,I want information about an invoice
+8,I want to dispute an invoice
+8,I want to pay an invoice
+9,I want to cancel an appointment
+9,I want to view my appointment details
+9,I want to reschedule an appointment
+9,I want to switch my appointment to virtual
+9,I want to switch my appointment to in-person
+30,I want ...[anything for patients only in the current patients list]
+30,I want to see a physician
+30,I want to follow up a recent result
+10,I want to do diagnostic tests
+10,I want to book an appointment
+10,I want an immunization
+10,I have a new medical concern
+10,I want a requisition
+11,I want a new prescription
+12,I want a referral to a specialist
+13,I want to register my newborn
+13,I want to book a first newborn visit
+14,I want to advise that I am running late
+15,I want to update my OHIP information
+16,I want a doctor's note
+16,I want a form filled in
+16,I want a sick note
+2,I want to request medical records for a patient
+2,I want to follow up on a request for medical records for a patient
+36,I want an physician's contact information
+37,I want to talk to the referring physician
+17,I want a prescription renewal
+17,I want to request a prescription renewal for a patient
+17,I have lost my prescription
+17,I want my prescription directed elsewhere
+17,I want to request a prescription renewal for a patient
+18,I want a pap test
+18,I want a Preventative Health Check
+18,I want to book a well baby appointment
+18,I want to book a well child appointment
+18,I want a mammogram
+18,I want a FIT test
+38,I want to provide patient medical records
+19,I want you to re-send my prescription / pharmacy did not receive prescription
+20,I want a requisition re-sent
+28,I want a requisition re-sent
+21,I want a copy of my immunization records
+21,I want to retrieve medical documents or medical records
+22,I want a new physician
+22,I want to book an appointment
+22,I want contact information for the clinic
+22,I want to register a family member
+23,I want to update my physician about care I have received elsewhere
+23,I want to provide my physician with a copy of my medical records / a report
+24,I want to provide an appointment date
+25,I want to switch physicians
+25,I want to switch clinics
+29,I want to report an urgent result

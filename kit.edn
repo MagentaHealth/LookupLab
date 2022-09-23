@@ -1,0 +1,8 @@
+{:full-name "dfd/story-discovery"
+ :ns-name   "dfd.story-discovery"
+ :sanitized "dfd/story_discovery"
+ :name      "story-discovery"
+ :modules   {:root         "modules"
+             :repositories [{:url  "https://github.com/kit-clj/modules.git"
+                             :tag  "master"
+                             :name "kit-modules"}]}}
