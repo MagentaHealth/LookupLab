@@ -1,6 +1,7 @@
 (ns dfd.story-discovery.web.routes.api
   (:require
     [dfd.story-discovery.web.controllers.health :as health]
+    [dfd.story-discovery.web.controllers.story-discovery :as story-discovery]
     [dfd.story-discovery.web.middleware.exception :as exception]
     [dfd.story-discovery.web.middleware.formats :as formats]
     [integrant.core :as ig]
@@ -17,7 +18,10 @@
            :swagger {:info {:title "dfd.story-discovery API"}}
            :handler (swagger/create-swagger-handler)}}]
    ["/health"
-    {:get health/healthcheck!}]])
+    {:get health/healthcheck!}]
+   ["/basic-search"
+    {:post {:handler    story-discovery/basic-search
+            :parameters {:body {:query string?}}}}]])
 
 (defn route-data
   [opts]

@@ -40,7 +40,8 @@
 
  :reitit.routes/api
  {:base-path "/api"
-  :env       #ig/ref :system/env}
+  :env       #ig/ref :system/env
+  :query-fn #ig/ref :db.sql/query-fn}
 
  :router/routes
  {:routes #ig/refset :reitit/routes}
@@ -58,8 +59,8 @@
  #profile {:dev {:store            :database,
                  :db               {:datasource #ig/ref :db.sql/connection},
                  :migrate-on-init? true
-                 :properties {:map {:data {:stories "/Users/carmen/src/magenta/story-discovery/resources/migrations/stories.csv"
-                                           :triggers "/Users/carmen/src/magenta/story-discovery/resources/migrations/triggers.csv"}}}}
+                 :properties {:map {:data {:stories "/Users/carmen/src/magenta/story-discovery/resources/stories.csv"
+                                           :triggers "/Users/carmen/src/magenta/story-discovery/resources/triggers.csv"}}}}
            :test {:store            :database,
                   :db               {:datasource #ig/ref :db.sql/connection},
                   :migrate-on-init? true}

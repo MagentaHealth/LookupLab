@@ -5,16 +5,16 @@
     [dfd.story-discovery.config :as config]
     [dfd.story-discovery.env :refer [defaults]]
 
-    ;; Edges       
+    ;; Edges
+    [kit.edge.db.sql.conman]
+    [kit.edge.db.sql.migratus]
+    [kit.edge.db.postgres]
     [kit.edge.utils.nrepl]
     [kit.edge.server.undertow]
     [dfd.story-discovery.web.handler]
 
     ;; Routes
-    [dfd.story-discovery.web.routes.api]
-    
-    [kit.edge.db.sql.conman] 
-    [kit.edge.db.sql.migratus])
+    [dfd.story-discovery.web.routes.api])
   (:gen-class))
 
 ;; log uncaught exceptions in threads

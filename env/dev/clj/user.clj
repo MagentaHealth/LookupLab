@@ -42,13 +42,26 @@
 (def refresh repl/refresh)
 
 (defn reset-db []
-  (migratus.core/reset (:db.sql/migrations state/system)) )
+  (migratus.core/reset (:db.sql/migrations state/system)))
 
 (defn rollback []
   (migratus.core/rollback (:db.sql/migrations state/system)))
 
 (defn migrate []
   (migratus.core/migrate (:db.sql/migrations state/system)))
+
+(def query-fn (:db.sql/query-fn state/system))
+
+(defn process-synonym-csv []
+  (->> (clojure.string/split (slurp "resources/synonyms.csv") #"\r\n")
+       (map #(-> % (clojure.string/split #",\s*")))
+       (reduce (fn [res [keyword syns]]
+                 (->> (clojure.string/split syns #";\s*")
+                      (map #(str % " : " keyword))
+                      (clojure.string/join "\n")
+                      (str res "\n")))
+               "")
+       (spit "resources/magenta.ths")))
 
 (comment
   (go)
