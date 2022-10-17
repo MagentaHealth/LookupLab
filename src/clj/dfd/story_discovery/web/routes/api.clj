@@ -19,9 +19,11 @@
            :handler (swagger/create-swagger-handler)}}]
    ["/health"
     {:get health/healthcheck!}]
-   ["/basic-search"
-    {:post {:handler    story-discovery/basic-search
-            :parameters {:body {:query string?}}}}]])
+   ["/search"
+    {:get {:handler    story-discovery/search
+           :parameters {:query {:query string?}}}}]
+   ["/triggers"
+    {:get {:handler story-discovery/list-triggers}}]])
 
 (defn route-data
   [opts]

@@ -1,38 +1,38 @@
-audience,description,destination
+audience,story,destination
 All,FAQ,https://www.magentahealth.ca/resources
 Third Parties,PHI Transfer,https://www.magentahealth.ca/information-for-physicians-and-healthcare-facilities
-Current Patient,Book an Appointment,https://www.magentahealth.ca/online-booking-link-retrieval-mag88
-Current Patient,Demographic Updates,https://www.magentahealth.ca/update-your-contact-info-1
-Current Patient,Deregistration,https://www.magentahealth.ca/patient-contact
-Current Patient,Existing Referral,https://www.magentahealth.ca/patient-contact
-Current Patient,Follow Up,"https://www.magentahealth.ca/patient-contact
+Current Patients,Book an Appointment,https://www.magentahealth.ca/online-booking-link-retrieval-mag88
+Current Patients,Demographic Updates,https://www.magentahealth.ca/update-your-contact-info-1
+Current Patients,Deregistration,https://www.magentahealth.ca/patient-contact
+Current Patients,Existing Referral,https://www.magentahealth.ca/patient-contact
+Current Patients,Follow Up,"https://www.magentahealth.ca/patient-contact
 https://www.magentahealth.ca/online-booking-link-retrieval-mag88"
-Current Patient,Invoices,https://www.magentahealth.ca/uninsured-services-and-block-fees
-Current Patient,Manage an Appointment,https://medical.veribook.com/manage-your-appointments/
-Current Patient,New Medical Concerns,https://www.magentahealth.ca/online-booking-link-retrieval-mag88
-Current Patient,New Prescriptions,https://www.magentahealth.ca/online-booking-link-retrieval-mag88
-Current Patient,New Referral,https://www.magentahealth.ca/online-booking-link-retrieval-mag88
-Current Patient,Newborns,https://www.magentahealth.ca/first-newborn-appointment
-Current Patient,Notification of Late Arrival,https://www.magentahealth.ca/patient-contact
-Current Patient,OHIP Updates,https://www.magentahealth.ca/report-updated-ohip-information
-Current Patient,Paperwork,"https://www.magentahealth.ca/patient-contact
+Current Patients,Invoices,https://www.magentahealth.ca/uninsured-services-and-block-fees
+Current Patients,Manage an Appointment,https://medical.veribook.com/manage-your-appointments/
+Current Patients,New Medical Concerns,https://www.magentahealth.ca/online-booking-link-retrieval-mag88
+Current Patients,New Prescriptions,https://www.magentahealth.ca/online-booking-link-retrieval-mag88
+Current Patients,New Referral,https://www.magentahealth.ca/online-booking-link-retrieval-mag88
+Current Patients,Newborns,https://www.magentahealth.ca/first-newborn-appointment
+Current Patients,Notification of Late Arrival,https://www.magentahealth.ca/patient-contact
+Current Patients,OHIP Updates,https://www.magentahealth.ca/report-updated-ohip-information
+Current Patients,Paperwork,"https://www.magentahealth.ca/patient-contact
 https://www.magentahealth.ca/online-booking-link-retrieval-mag88"
-Current Patient,Prescription Renewal,https://www.magentahealth.ca/prescription-renewals
-Current Patient,Preventative Health,https://www.magentahealth.ca/online-booking-link-retrieval-mag88
-Current Patient,Re-send Prescription,https://www.magentahealth.ca/prescription-renewals
-Current Patient,Re-send Requisition to Patient,https://www.magentahealth.ca/patient-contact
-Current Patient,Record Requests,https://www.magentahealth.ca/request-for-medical-records
-Current Patient,Registration,https://www.magentahealth.ca/patientpreregistration
-Current Patient,Reporting Care Elsewhere,https://www.magentahealth.ca/patient-contact
-Current Patient,Specialist Appointments,https://www.magentahealth.ca/patient-contact
-Current Patient,Switches (MD or Clinic),"Clinic: https://www.magentahealth.ca/clinic-switch-policy
+Current Patients,Prescription Renewal,https://www.magentahealth.ca/prescription-renewals
+Current Patients,Preventative Health,https://www.magentahealth.ca/online-booking-link-retrieval-mag88
+Current Patients,Re-send Prescription,https://www.magentahealth.ca/prescription-renewals
+Current Patients,Re-send Requisition to Patient,https://www.magentahealth.ca/patient-contact
+Current Patients,Record Requests,https://www.magentahealth.ca/request-for-medical-records
+Current Patients,Registration,https://www.magentahealth.ca/patientpreregistration
+Current Patients,Reporting Care Elsewhere,https://www.magentahealth.ca/patient-contact
+Current Patients,Specialist Appointments,https://www.magentahealth.ca/patient-contact
+Current Patients,Switches (MD or Clinic),"Clinic: https://www.magentahealth.ca/clinic-switch-policy
 MD: https://www.magentahealth.ca/physician-switching-policy"
 Third Parties,PHI Transfer,https://www.magentahealth.ca/information-for-physicians-and-healthcare-facilities
 Third Parties,Clarifications,https://www.magentahealth.ca/information-for-physicians-and-healthcare-facilities
 Third Parties,Re-send requistion to Lab,https://www.magentahealth.ca/information-for-physicians-and-healthcare-facilities
 Third Parties,Urgent Lab Result,https://www.magentahealth.ca/information-for-physicians-and-healthcare-facilities
-Non Patient,Medical care for non-patients,This falls under current patients - new concerns... they just wouldnt get past appt page
-Non Patient,Registration,https://www.magentahealth.ca/patientpreregistration
+Non Patients,Medical care for non-patients,This falls under Current Patientss - new concerns... they just wouldnt get past appt page
+Non Patients,Registration,https://www.magentahealth.ca/patientpreregistration
 Third Parties,Clarifications,https://www.magentahealth.ca/information-for-physicians-and-healthcare-facilities
 Third Parties,Re-send Prescription,https://www.magentahealth.ca/information-for-physicians-and-healthcare-facilities
 Third Parties,Billing Number Request,https://www.magentahealth.ca/fax

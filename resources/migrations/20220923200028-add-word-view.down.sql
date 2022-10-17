@@ -1,1 +1,1 @@
-drop materialized view if exists search_lexeme;
+drop materialized view if exists search_word;
