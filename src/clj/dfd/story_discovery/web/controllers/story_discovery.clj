@@ -27,3 +27,5 @@
           (->> (query-fn :tsquery-search {:query (string/join " | " words)})
                (group-by :audience)
                (http-response/ok)))))))
+
+;; TODO: typos in synonyms

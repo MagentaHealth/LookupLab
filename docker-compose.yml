@@ -1,0 +1,29 @@
+version: '3'
+
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.app
+    depends_on:
+      - db
+    environment:
+      JDBC_URL: jdbc:postgresql://db/dfd?user=dfd&password=dfd
+    ports:
+      - "3000:3000"
+    restart: always
+
+  db:
+    build:
+      context: .
+      dockerfile: Dockerfile.db
+    environment:
+      POSTGRES_USER: dfd
+      POSTGRES_PASSWORD: dfd
+      POSTGRES_DB: dfd
+    ports:
+      - "5432:5432"
+    restart: always
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data

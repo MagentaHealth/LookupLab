@@ -39,23 +39,16 @@ pills : prescription
 script : prescription
 medication : prescription
 identify : pronouns
-he : pronouns
-his : pronouns
-she : pronouns
-her : pronouns
-they : pronouns
-them : pronouns
 ze : pronouns
 zir : pronouns
 zem : pronouns
 zeir : pronouns
-their : pronouns
 hims : pronouns
 consult : referral
 consultation : referral
 join : register
 enroll : register
-sign up : register
+sign : register
 apply : register
 refill : renewal
 bloodwork : requisition

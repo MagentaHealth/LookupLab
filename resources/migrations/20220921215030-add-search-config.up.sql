@@ -8,10 +8,10 @@ create text search dictionary magenta_ths (
     dictionary = english_stem
 );
 --;;
-create text search dictionary magenta_syn (
-    template = synonym,
-    synonyms = magenta
-);
+-- create text search dictionary magenta_syn (
+--     template = synonym,
+--     synonyms = magenta
+-- );
 --;;
 alter text search configuration magenta
     alter mapping for asciiword, asciihword, hword_asciipart, word, hword, hword_part

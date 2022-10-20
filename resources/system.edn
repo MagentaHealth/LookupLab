@@ -4,12 +4,12 @@
            :prod :prod}
 
  :nrepl/server
- {:port #long #or [#env NREPL_PORT 7000]
-  :bind #or [#env NREPL_HOST "127.0.0.1"]}
+ {:port 7000
+  :bind "127.0.0.1"}
 
  :server/http
- {:port    #long #or [#env PORT 3000]
-  :host    #or [#env HTTP_HOST "0.0.0.0"]
+ {:port    3000
+  :host    "0.0.0.0"
   :handler #ig/ref :handler/ring}
 
  :handler/ring
@@ -41,7 +41,7 @@
  :reitit.routes/api
  {:base-path "/api"
   :env       #ig/ref :system/env
-  :query-fn #ig/ref :db.sql/query-fn}
+  :query-fn  #ig/ref :db.sql/query-fn}
 
  :router/routes
  {:routes #ig/refset :reitit/routes}
@@ -56,17 +56,21 @@
   :filename "sql/queries.sql"}
 
  :db.sql/migrations
- #profile {:dev {:store            :database,
-                 :db               {:datasource #ig/ref :db.sql/connection},
-                 :migrate-on-init? true
-                 :properties {:map {:data {:stories "/Users/carmen/src/magenta/story-discovery/resources/stories.csv"
-                                           :triggers "/Users/carmen/src/magenta/story-discovery/resources/triggers.csv"}}}}
+ #profile {:dev  {:store            :database,
+                  :db               {:datasource #ig/ref :db.sql/connection},
+                  :migrate-on-init? true
+                  :properties       {:map {:data {:stories  "/Users/carmen/src/magenta/story-discovery/resources/stories.csv"
+                                                  :triggers "/Users/carmen/src/magenta/story-discovery/resources/triggers.csv"}}}}
            :test {:store            :database,
                   :db               {:datasource #ig/ref :db.sql/connection},
-                  :migrate-on-init? true}
+                  :migrate-on-init? true
+                  :properties       {:map {:data {:stories  "/Users/carmen/src/magenta/story-discovery/resources/stories.csv"
+                                                  :triggers "/Users/carmen/src/magenta/story-discovery/resources/triggers.csv"}}}}
            :prod {:store            :database,
                   :db               {:datasource #ig/ref :db.sql/connection},
-                  :migrate-on-init? true}}
+                  :migrate-on-init? true
+                  :properties       {:map {:data {:stories  "/data/stories.csv"
+                                                  :triggers "/data/triggers.csv"}}}}}
 
  :db.sql/connection
  #profile {:dev  {:jdbc-url "jdbc:postgresql://localhost:5432/dfd?user=dfd&password=dfd"},
