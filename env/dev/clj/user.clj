@@ -50,7 +50,11 @@
 (defn migrate []
   (migratus.core/migrate (:db.sql/migrations state/system)))
 
-(def query-fn (:db.sql/query-fn state/system))
+(defn query-fn [& args]
+  (apply (:db.sql/query-fn state/system) args))
+
+(defn snip-fn [& args]
+  (apply (:db.sql/snip-fn state/system) args))
 
 (defn process-synonym-csv []
   (->> (clojure.string/split (slurp "resources/synonyms.csv") #"\r\n")

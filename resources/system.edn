@@ -41,7 +41,8 @@
  :reitit.routes/api
  {:base-path "/api"
   :env       #ig/ref :system/env
-  :query-fn  #ig/ref :db.sql/query-fn}
+  :query-fn  #ig/ref :db.sql/query-fn
+  :snip-fn   #ig/ref :db.sql/snip-fn}
 
  :router/routes
  {:routes #ig/refset :reitit/routes}
@@ -51,6 +52,11 @@
 
 
  :db.sql/query-fn
+ {:conn     #ig/ref :db.sql/connection,
+  :options  {},
+  :filename "sql/queries.sql"}
+
+ :db.sql/snip-fn
  {:conn     #ig/ref :db.sql/connection,
   :options  {},
   :filename "sql/queries.sql"}

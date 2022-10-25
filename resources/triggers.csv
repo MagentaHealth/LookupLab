@@ -1,83 +1,82 @@
-story_id,prefix,description
-34,I want,physician billing numbers
-3,I want to,book an appointment
-3,I want to,book an urgent appointment
-3,I want to,book an appointment with the clinic nurse
-3,I want my,my physician to call me
-27,I want to,clarify the details of a prescription
-27,I want to,clarify a requisition
-4,I want to,update my contact information
-4,I want to,inform you of my pronouns
-4,I want to,update my name/preferred name
-5,I want to,deregister from my physician
-6,I want,details of my exisiting referral to a specialist
-6,I want to,cancel my existing referral to a specialist
-6,I want to,reschedule my appointment with a specialist
-6,I want to,change my referral to a different specialist
-6,I want you to,re-send my referral / specialist did not recieve the referral
-6,I want,additional information related to an existing referral
-6,I want to,follow up the status of an existing referral
-1,I want,information about physicians
-1,I want,directions to a clinic
-1,I want,parking information
-1,I want to,know clinic hours
-1,I want to,bring my service animal
-1,I want to,know what languages are spoken
-7,I want to,follow up a recent result
-7,I want to,follow up on a previously discussed medical concern
-7,I want to,respond to my physician's questions
-8,I want,information about an invoice
-8,I want to,dispute an invoice
-8,I want to,pay an invoice
-9,I want to,cancel an appointment
-9,I want to,view my appointment details
-9,I want to,reschedule an appointment
-9,I want to,switch my appointment to virtual
-9,I want to,switch my appointment to in-person
-30,I want,...[anything for patients only in the current patients list]
-30,I want to,see a physician
-30,I want to,follow up a recent result
-10,I want to,do diagnostic tests
-10,I want to,book an appointment
-10,I want to,an immunization
-10,I have a,new medical concern
-10,I want a,requisition
-11,I want a,new prescription
-12,I want a,referral to a specialist
-13,I want to,register my newborn
-13,I want to,book a first newborn visit
-14,I want to,advise that I am running late
-15,I want to,update my OHIP information
-16,I want a,doctor's note
-16,I want a,form filled in
-16,I want a,sick note
-2,I want to,request medical records for a patient
-2,I want to,follow up on a request for medical records for a patient
-36,I want a,an physician's contact information
-37,I want to,talk to the referring physician
-17,I want a,prescription renewal
-17,I want to,request a prescription renewal for a patient
-17,I have,lost my prescription
-17,I want,my prescription directed elsewhere
-18,I want a,pap test
-18,I want a,Preventative Health Check
-18,I want to,book a well baby appointment
-18,I want to,book a well child appointment
-18,I want a,mammogram
-18,I want a,FIT test
-38,I want to,provide patient medical records
-19,I want you to,re-send my prescription / pharmacy did not receive prescription
-20,I want a,requisition re-sent
-28,I want a,requisition re-sent
-21,I want to,copy of my immunization records
-21,I want to,retrieve medical documents or medical records
-22,I want a,new physician
-22,I want to,book an appointment
-22,I want ,contact information for the clinic
-22,I want to,register a family member
-23,I want to,update my physician about care I have received elsewhere
-23,I want to,provide my physician with a copy of my medical records / a report
-24,I want to,provide an appointment date
-25,I want to,switch physicians
-25,I want to,switch clinics
-29,I want to,report an urgent result
+story_id,prefix,description,is_default
+32,I want,physician billing numbers,FALSE
+2,I want to,book an appointment,TRUE
+2,I want to,book an urgent appointment,FALSE
+2,I want to,book an appointment with the clinic nurse,FALSE
+2,I want my,my physician to call me,FALSE
+28,I want to,clarify the details of a prescription,FALSE
+28,I want to,clarify a requisition,FALSE
+3,I want to,update my contact information,FALSE
+3,I want to,inform you of my pronouns,FALSE
+3,I want to,update my name/preferred name,FALSE
+4,I want to,deregister from my physician,FALSE
+5,I want,details of my exisiting referral to a specialist,FALSE
+5,I want to,cancel my existing referral to a specialist,FALSE
+5,I want to,reschedule my appointment with a specialist,FALSE
+5,I want to,change my referral to a different specialist,FALSE
+5,I want you to,re-send my referral / specialist did not recieve the referral,FALSE
+5,I want,additional information related to an existing referral,FALSE
+5,I want to,follow up the status of an existing referral,FALSE
+1,I want,information about physicians,FALSE
+1,I want,directions to a clinic,FALSE
+1,I want,parking information,FALSE
+1,I want to,know clinic hours,FALSE
+1,I want to,bring my service animal,FALSE
+1,I want to,know what languages are spoken,FALSE
+6,I want to,follow up a recent result,TRUE
+6,I want to,follow up on a previously discussed medical concern,FALSE
+6,I want to,respond to my physician's questions,FALSE
+7,I want,information about an invoice,FALSE
+7,I want to,dispute an invoice,FALSE
+7,I want to,pay an invoice,FALSE
+8,I want to,cancel an appointment,FALSE
+8,I want to,view my appointment details,FALSE
+8,I want to,reschedule an appointment,FALSE
+8,I want to,switch my appointment to virtual,FALSE
+8,I want to,switch my appointment to in-person,FALSE
+26,I want,...[anything for patients only in the current patients list],FALSE
+26,I want to,see a physician,FALSE
+26,I want to,follow up a recent result,FALSE
+9,I want to,do diagnostic tests,FALSE
+9,I want to,an immunization,FALSE
+9,I have a,new medical concern,FALSE
+9,I want a,requisition,FALSE
+10,I want a,new prescription,FALSE
+11,I want a,referral to a specialist,FALSE
+12,I want to,register my newborn,FALSE
+12,I want to,book a first newborn visit,FALSE
+13,I want to,advise that I am running late,FALSE
+14,I want to,update my OHIP information,FALSE
+15,I want a,doctor's note,FALSE
+15,I want a,form filled in,FALSE
+15,I want a,sick note,FALSE
+27,I want to,request medical records for a patient,FALSE
+27,I want to,follow up on a request for medical records for a patient,FALSE
+33,I want a,an physician's contact information,FALSE
+34,I want to,talk to the referring physician,FALSE
+16,I want a,prescription renewal,TRUE
+16,I want to,request a prescription renewal for a patient,FALSE
+16,I have,lost my prescription,FALSE
+16,I want,my prescription directed elsewhere,FALSE
+17,I want a,pap test,FALSE
+17,I want a,Preventative Health Check,FALSE
+17,I want to,book a well baby appointment,FALSE
+17,I want to,book a well child appointment,FALSE
+17,I want a,mammogram,FALSE
+17,I want a,FIT test,FALSE
+35,I want to,provide patient medical records,FALSE
+18,I want you to,re-send my prescription / pharmacy did not receive prescription,FALSE
+19,I want a,requisition re-sent,FALSE
+29,I want a,requisition re-sent,FALSE
+20,I want to,copy of my immunization records,FALSE
+20,I want to,retrieve medical documents or medical records,FALSE
+25,I want a,new physician,FALSE
+25,I want to,book an appointment,FALSE
+25,I want ,contact information for the clinic,TRUE
+21,I want to,register a family member,FALSE
+22,I want to,update my physician about care I have received elsewhere,FALSE
+22,I want to,provide my physician with a copy of my medical records / a report,FALSE
+23,I want to,provide an appointment date,FALSE
+24,I want to,switch physicians,FALSE
+24,I want to,switch clinics,FALSE
+30,I want to,report an urgent result,FALSE

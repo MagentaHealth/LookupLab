@@ -1,14 +1,16 @@
 (ns dfd.story-discovery.core
   (:require
-    [clojure.tools.logging :as log]
-    [integrant.core :as ig]
+    [dfd.story-discovery.db.core]
     [dfd.story-discovery.config :as config]
     [dfd.story-discovery.env :refer [defaults]]
+
+    [integrant.core :as ig]
+    [clojure.tools.logging :as log]
+    [conman.core :as conman]
 
     ;; Edges
     [kit.edge.db.sql.conman]
     [kit.edge.db.sql.migratus]
-    [kit.edge.db.postgres]
     [kit.edge.utils.nrepl]
     [kit.edge.server.undertow]
     [dfd.story-discovery.web.handler]
@@ -16,6 +18,15 @@
     ;; Routes
     [dfd.story-discovery.web.routes.api])
   (:gen-class))
+
+
+(defmethod ig/init-key :db.sql/snip-fn
+  [_ {:keys [conn options filename]
+      :or   {options {}}}]
+  (let [queries (conman/bind-connection-map conn options filename)]
+    (fn [query params]
+      (conman/snip queries query params))))
+
 
 ;; log uncaught exceptions in threads
 (Thread/setDefaultUncaughtExceptionHandler

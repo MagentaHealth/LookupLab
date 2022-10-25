@@ -1,6 +1,5 @@
 audience,story,destination
 All,FAQ,https://www.magentahealth.ca/resources
-Third Parties,PHI Transfer,https://www.magentahealth.ca/information-for-physicians-and-healthcare-facilities
 Current Patients,Book an Appointment,https://www.magentahealth.ca/online-booking-link-retrieval-mag88
 Current Patients,Demographic Updates,https://www.magentahealth.ca/update-your-contact-info-1
 Current Patients,Deregistration,https://www.magentahealth.ca/patient-contact
@@ -19,24 +18,22 @@ Current Patients,Paperwork,"https://www.magentahealth.ca/patient-contact
 https://www.magentahealth.ca/online-booking-link-retrieval-mag88"
 Current Patients,Prescription Renewal,https://www.magentahealth.ca/prescription-renewals
 Current Patients,Preventative Health,https://www.magentahealth.ca/online-booking-link-retrieval-mag88
-Current Patients,Re-send Prescription,https://www.magentahealth.ca/prescription-renewals
+Current Patients,Patient Requests Re-send Prescription,https://www.magentahealth.ca/prescription-renewals
 Current Patients,Re-send Requisition to Patient,https://www.magentahealth.ca/patient-contact
 Current Patients,Record Requests,https://www.magentahealth.ca/request-for-medical-records
-Current Patients,Registration,https://www.magentahealth.ca/patientpreregistration
+Current Patients,Family Registration,https://www.magentahealth.ca/patientpreregistration
 Current Patients,Reporting Care Elsewhere,https://www.magentahealth.ca/patient-contact
 Current Patients,Specialist Appointments,https://www.magentahealth.ca/patient-contact
 Current Patients,Switches (MD or Clinic),"Clinic: https://www.magentahealth.ca/clinic-switch-policy
 MD: https://www.magentahealth.ca/physician-switching-policy"
+Non Patients,New Patient Registration,https://www.magentahealth.ca/patientpreregistration
+Non Patients,Medical care for non-patients,This falls under Current Patientss - new concerns... they just wouldnt get past appt page
 Third Parties,PHI Transfer,https://www.magentahealth.ca/information-for-physicians-and-healthcare-facilities
 Third Parties,Clarifications,https://www.magentahealth.ca/information-for-physicians-and-healthcare-facilities
 Third Parties,Re-send requistion to Lab,https://www.magentahealth.ca/information-for-physicians-and-healthcare-facilities
 Third Parties,Urgent Lab Result,https://www.magentahealth.ca/information-for-physicians-and-healthcare-facilities
-Non Patients,Medical care for non-patients,This falls under Current Patientss - new concerns... they just wouldnt get past appt page
-Non Patients,Registration,https://www.magentahealth.ca/patientpreregistration
-Third Parties,Clarifications,https://www.magentahealth.ca/information-for-physicians-and-healthcare-facilities
-Third Parties,Re-send Prescription,https://www.magentahealth.ca/information-for-physicians-and-healthcare-facilities
+Third Parties,Pharmacy Requests Re-send Prescription,https://www.magentahealth.ca/information-for-physicians-and-healthcare-facilities
 Third Parties,Billing Number Request,https://www.magentahealth.ca/fax
-Third Parties,PHI Transfer,https://www.magentahealth.ca/information-for-physicians-and-healthcare-facilities
 Third Parties,Physician Contact Information,https://www.magentahealth.ca/fax
 Third Parties,Physician to Physician Meeting,https://www.magentahealth.ca/information-for-physicians-and-healthcare-facilities
 Third Parties,Providing Medical Records,https://www.magentahealth.ca/upload

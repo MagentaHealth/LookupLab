@@ -1,0 +1,1 @@
+drop table if exists click_through_log;

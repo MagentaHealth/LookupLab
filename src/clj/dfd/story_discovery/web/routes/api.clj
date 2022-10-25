@@ -22,8 +22,14 @@
    ["/search"
     {:get {:handler    story-discovery/search
            :parameters {:query {:query string?}}}}]
-   ["/triggers"
-    {:get {:handler story-discovery/list-triggers}}]])
+   ["/all-triggers"
+    {:get {:handler story-discovery/list-all-triggers}}]
+   ["/default-triggers"
+    {:get {:handler story-discovery/list-default-triggers}}]
+   ["/log-click-through"
+    {:post {:handler    story-discovery/log-click-through
+            :parameters {:body {:query   string?
+                                :trigger map?}}}}]])
 
 (defn route-data
   [opts]
