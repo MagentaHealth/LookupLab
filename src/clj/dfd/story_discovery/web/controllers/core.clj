@@ -1,9 +1,19 @@
-(ns dfd.story-discovery.web.controllers.story-discovery
+(ns dfd.story-discovery.web.controllers.core
   (:require
     [clojure.string :as string]
     [clojure.tools.logging :as log]
     [ring.util.http-response :as http-response]
-    [dfd.story-discovery.web.routes.utils :as utils]))
+    [dfd.story-discovery.web.routes.utils :as utils])
+  (:import
+    [java.util Date]))
+
+(defn healthcheck!
+  [req]
+  (http-response/ok
+    {:time     (str (Date. (System/currentTimeMillis)))
+     :up-since (str (Date. (.getStartTime (java.lang.management.ManagementFactory/getRuntimeMXBean))))
+     :app      {:status  "up"
+                :message ""}}))
 
 (defn list-all-triggers
   [request]
@@ -12,7 +22,9 @@
     (try
       (->> (query-fn :list-all-triggers {:select (snip-fn :select-triggers-snip {})})
            (group-by :audience)
-           (http-response/ok)))))
+           (http-response/ok))
+      (catch Exception e
+        (log/error "failed to list triggers" e)))))
 
 (defn list-default-triggers
   [request]
@@ -21,7 +33,9 @@
     (try
       (->> (query-fn :list-default-triggers {:select (snip-fn :select-triggers-snip {})})
            (group-by :audience)
-           (http-response/ok)))))
+           (http-response/ok))
+      (catch Exception e
+        (log/error "failed to list default triggers" e)))))
 
 (defn search*
   [query-fn snip-fn query]
@@ -31,11 +45,13 @@
                      {:select (snip-fn :select-triggers-snip {})
                       :query  query})
            (not-empty))
-      (let [words (->> (query-fn :word-search {:words (string/split query #"\s+")})
+      (do
+        (log/info (str "no results found for query " query ", performing trigram search"))
+        (let [words (->> (query-fn :word-search {:words (string/split query #"\s+")})
                        (map :word))]
         (query-fn :tsquery-search
                   {:select (snip-fn :select-triggers-snip {})
-                   :query  (string/join " | " words)})))
+                   :query  (string/join " | " words)}))))
     (catch Exception e
       (log/error "failed to perform search" e))))
 
@@ -43,8 +59,8 @@
   [{{:keys [query]} :params :as request}]
   (log/info "searching for" query)
   (let [{:keys [query-fn snip-fn]} (utils/route-data request)
-        query   (string/replace query #"want|need|have|require" "")
-        results (search* query-fn snip-fn query)]
+        stripped-query (string/replace query #"want|need|have|require" "")
+        results        (search* query-fn snip-fn stripped-query)]
     (try
       (query-fn :log-search {:query query :results results})
       (catch Exception e
@@ -52,7 +68,6 @@
     (->> results
          (group-by :audience)
          (http-response/ok))))
-;; TODO: typos in synonyms
 
 (defn log-click-through
   [{{:keys [query trigger]} :body-params :as request}]

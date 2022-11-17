@@ -1,7 +1,6 @@
 (ns dfd.story-discovery.web.routes.api
   (:require
-    [dfd.story-discovery.web.controllers.health :as health]
-    [dfd.story-discovery.web.controllers.story-discovery :as story-discovery]
+    [dfd.story-discovery.web.controllers.core :as controllers]
     [dfd.story-discovery.web.middleware.exception :as exception]
     [dfd.story-discovery.web.middleware.formats :as formats]
     [integrant.core :as ig]
@@ -18,16 +17,16 @@
            :swagger {:info {:title "dfd.story-discovery API"}}
            :handler (swagger/create-swagger-handler)}}]
    ["/health"
-    {:get health/healthcheck!}]
+    {:get controllers/healthcheck!}]
    ["/search"
-    {:get {:handler    story-discovery/search
+    {:get {:handler    controllers/search
            :parameters {:query {:query string?}}}}]
    ["/all-triggers"
-    {:get {:handler story-discovery/list-all-triggers}}]
+    {:get {:handler controllers/list-all-triggers}}]
    ["/default-triggers"
-    {:get {:handler story-discovery/list-default-triggers}}]
+    {:get {:handler controllers/list-default-triggers}}]
    ["/log-click-through"
-    {:post {:handler    story-discovery/log-click-through
+    {:post {:handler    controllers/log-click-through
             :parameters {:body {:query   string?
                                 :trigger map?}}}}]])
 

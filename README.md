@@ -1,37 +1,45 @@
-# story-discovery
+# DFD Story Discovery Tool
 
-Start a [REPL](#repls) in your editor or terminal of choice.
+## Prerequisites
 
-Start the server with:
+You will need the following to compile and run the application.
 
-```clojure
-(go)
-```
+* [PostgreSQL](https://www.postgresql.org/download/) 14 or greater
+* [JDK](https://www.azul.com/downloads/) 11 or greater is required. 
+* [Clojure](https://clojure.org/guides/install_clojure)
+* [Babashka](https://github.com/babashka/babashka#installation) (optional)
 
-The default API is available under http://localhost:3000/api
 
-System configuration is available under `resources/system.edn`.
+## Development
 
-To reload changes:
+### Setup
+1. Clone this repo 
+1. Run `./dev-setup.sh`
 
-```clojure
-(reset)
-```
+This will: 
+1. Generate a magenta.ths file and copy it into the appropriate location 
+2. Create a new local database `dfd` with user/pass `dfd/dfd`.
 
-## REPLs
+### Running
+1. Start a REPL from the command line with `clj -M:dev:nrepl` (or `bb nrepl`) 
+2. Start the server by running `(go)` in the REPL.
 
-### Cursive
+Any pending migrations will be ran when the server is started. The tables will also be populated with the data in the `search_data` directory.
 
-Configure a [REPL following the Cursive documentation](https://cursive-ide.com/userguide/repl.html). Using the default "Run with IntelliJ project classpath" option will let you select an alias from the ["Clojure deps" aliases selection](https://cursive-ide.com/userguide/deps.html#refreshing-deps-dependencies).
+Once the server starts, the default API is available under http://localhost:3000/api. System configuration is available under `resources/system.edn`.
 
-### CIDER
+To reload changes, run `(reset)` in the REPL.
 
-Use the `cider` alias for CIDER nREPL support (run `clj -M:dev:cider`). See the [CIDER docs](https://docs.cider.mx/cider/basics/up_and_running.html) for more help.
 
-Note that this alias runs nREPL during development. To run nREPL in production (typically when the system starts), use the kit-nrepl library through the +nrepl profile as described in [the documentation](https://kit-clj.github.io/docs/profiles.html#profiles).
+## Packaging / Deployment
 
-### Command Line
+### Setup
+To configure production database credentials, run `./prod-setup.sh`. 
 
-Run `clj -M:dev:nrepl` or `make repl`.
+This will generate a new DB password and place it into `db.env` (used in `docker-compose.yml`) and `.db-connection.edn` (used in the `:prod` profile in `resources/system.edn`).
 
-Note that, just like with [CIDER](#cider), this alias runs nREPL during development. To run nREPL in production (typically when the system starts), use the kit-nrepl library through the +nrepl profile as described in [the documentation](https://kit-clj.github.io/docs/profiles.html#profiles).
+You should also already have a `search_data/magenta.ths` file. If you do not, you can generate one by running `clj -T:build ths` (or `bb gen-ths`) or create your own from scratch.
+
+### Running
+Run `docker compose up` (add `-d` for detached mode).
+

@@ -4,7 +4,6 @@
     [clojure.pprint]
     [clojure.spec.alpha :as s]
     [clojure.tools.namespace.repl :as repl]
-    [criterium.core :as c]                                  ;; benchmarking
     [expound.alpha :as expound]
     [integrant.core :as ig]
     [integrant.repl :refer [clear go halt prep init reset reset-all]]
@@ -55,17 +54,6 @@
 
 (defn snip-fn [& args]
   (apply (:db.sql/snip-fn state/system) args))
-
-(defn process-synonym-csv []
-  (->> (clojure.string/split (slurp "resources/synonyms.csv") #"\r\n")
-       (map #(-> % (clojure.string/split #",\s*")))
-       (reduce (fn [res [keyword syns]]
-                 (->> (clojure.string/split syns #";\s*")
-                      (map #(str % " : " keyword))
-                      (clojure.string/join "\n")
-                      (str res "\n")))
-               "")
-       (spit "resources/magenta.ths")))
 
 (comment
   (go)

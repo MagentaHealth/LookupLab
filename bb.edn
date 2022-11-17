@@ -18,4 +18,6 @@
                     :task (clojure {:dir "."} "-T:build all")}
 
          format    {:doc  "Formats codebase"
-                    :task (shell {:dir "src"} "cljstyle fix")}}}
+                    :task (shell {:dir "src"} "cljstyle fix")}
+
+         gen-ths   {:task (clojure {:dir "."} "-T:build ths")}}}

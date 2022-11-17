@@ -27,7 +27,6 @@
     (fn [query params]
       (conman/snip queries query params))))
 
-
 ;; log uncaught exceptions in threads
 (Thread/setDefaultUncaughtExceptionHandler
   (reify Thread$UncaughtExceptionHandler

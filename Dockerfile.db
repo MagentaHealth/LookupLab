@@ -1,5 +1,3 @@
 FROM postgres:14
 
-COPY resources/magenta.ths /usr/share/postgresql/14/tsearch_data/magenta.ths
-COPY resources/stories.csv /data/stories.csv
-COPY resources/triggers.csv /data/triggers.csv
+RUN ln -s ./search_data/magenta.ths "$(pg_config --sharedir)/tsearch_data/magenta.ths"

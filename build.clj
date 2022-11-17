@@ -40,3 +40,14 @@
 
 (defn all [_]
   (do (clean nil) (prep nil) (uber nil)))
+
+
+(defn ths [_]
+  (println "generating search_data/magenta.ths file from search_data/synonyms.csv")
+  (->> (clojure.string/split (slurp "search_data/synonyms.csv") (re-pattern (System/lineSeparator)))
+       (rest)
+       (map (fn [s] (clojure.string/split s (re-pattern ","))))
+       (reduce (fn [res [keyword syn]]
+                   (str res syn " : " keyword "\n"))
+               "")
+       (spit "search_data/magenta.ths")))

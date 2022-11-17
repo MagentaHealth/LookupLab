@@ -65,20 +65,23 @@
  #profile {:dev  {:store            :database,
                   :db               {:datasource #ig/ref :db.sql/connection},
                   :migrate-on-init? true
-                  :properties       {:map {:data {:stories  "/Users/carmen/src/magenta/story-discovery/resources/stories.csv"
-                                                  :triggers "/Users/carmen/src/magenta/story-discovery/resources/triggers.csv"}}}}
+                  :properties       {:map {:data {:stories  #join [#env PWD "/search_data/stories.csv"]
+                                                  :triggers #join [#env PWD "/search_data/triggers.csv"]
+                                                  :synonyms #join [#env PWD "/search_data/synonyms.csv"]}}}}
            :test {:store            :database,
                   :db               {:datasource #ig/ref :db.sql/connection},
                   :migrate-on-init? true
-                  :properties       {:map {:data {:stories  "/Users/carmen/src/magenta/story-discovery/resources/stories.csv"
-                                                  :triggers "/Users/carmen/src/magenta/story-discovery/resources/triggers.csv"}}}}
+                  :properties       {:map {:data {:stories  #join [#env PWD "/search_data/stories.csv"]
+                                                  :triggers #join [#env PWD "/search_data/triggers.csv"]
+                                                  :synonyms #join [#env PWD "/search_data/synonyms.csv"]}}}}
            :prod {:store            :database,
                   :db               {:datasource #ig/ref :db.sql/connection},
                   :migrate-on-init? true
-                  :properties       {:map {:data {:stories  "/data/stories.csv"
-                                                  :triggers "/data/triggers.csv"}}}}}
+                  :properties       {:map {:data {:stories  "/search_data/stories.csv"
+                                                  :triggers "/search_data/triggers.csv"
+                                                  :synonyms "/search_data/synonyms.csv"}}}}}
 
  :db.sql/connection
  #profile {:dev  {:jdbc-url "jdbc:postgresql://localhost:5432/dfd?user=dfd&password=dfd"},
            :test {:jdbc-url "jdbc:postgresql://localhost:5432/dfd?user=dfd&password=dfd"},
-           :prod {:jdbc-url #env JDBC_URL}}}
+           :prod #include "/app/.db-connection.edn"}}

@@ -37,9 +37,11 @@
 
 
 (defmethod ig/init-key :router/core
-  [_ {:keys [routes]}]
+  [_ {:keys [routes cors-origins cors-methods]
+      :or   {cors-origins [#".*"]
+             cors-methods [:get :put :post :patch :delete]}}]
   (ring/router
     routes
     {:data {:middleware [[wrap-cors
-                          :access-control-allow-origin [#".*"]
-                          :access-control-allow-methods [:get :put :post :patch :delete]]]}}))
+                          :access-control-allow-origin cors-origins
+                          :access-control-allow-methods cors-methods]]}}))
