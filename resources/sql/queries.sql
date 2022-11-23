@@ -20,16 +20,16 @@ where trigger.is_default = true;
 
 -- :name plain-search :? :*
 :snip:select,
-      ts_rank(search_vector, plainto_tsquery('magenta', :query))
+      ts_rank(search_vector, plainto_tsquery('dfd', :query))
 from trigger join story on trigger.story_id = story.id
-where search_vector @@ plainto_tsquery('magenta', :query);
+where search_vector @@ plainto_tsquery('dfd', :query);
 
 
 -- :name tsquery-search :? :*
 :snip:select,
-      ts_rank(search_vector, plainto_tsquery('magenta', :query))
+      ts_rank(search_vector, plainto_tsquery('dfd', :query))
 from trigger join story on trigger.story_id = story.id
-where search_vector @@ to_tsquery('magenta', :query);
+where search_vector @@ to_tsquery('dfd', :query);
 
 
 -- :name word-search :? :*
@@ -40,7 +40,7 @@ where
 /*~
 (string/join " or "
  (for [word (:words params)]
-   (str "similarity(word,'" word "') > 0.3")))
+   (str "similarity(word,'" word "') >= 0.25")))
 ~*/
 
 

@@ -19,6 +19,6 @@ modules/
 .lsp/.cache/
 
 # docker/deployment related
-search_data/magenta.ths
+search_data/dfd.ths
 .db-connection.edn
 db.env

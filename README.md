@@ -17,7 +17,7 @@ You will need the following to compile and run the application.
 1. Run `./dev-setup.sh`
 
 This will: 
-1. Generate a magenta.ths file and copy it into the appropriate location 
+1. Generate a dfd.ths file and copy it into the appropriate location 
 2. Create a new local database `dfd` with user/pass `dfd/dfd`.
 
 ### Running
@@ -38,7 +38,7 @@ To configure production database credentials, run `./prod-setup.sh`.
 
 This will generate a new DB password and place it into `db.env` (used in `docker-compose.yml`) and `.db-connection.edn` (used in the `:prod` profile in `resources/system.edn`).
 
-You should also already have a `search_data/magenta.ths` file. If you do not, you can generate one by running `clj -T:build ths` (or `bb gen-ths`) or create your own from scratch.
+You should also already have a `search_data/dfd.ths` file. If you do not, you can generate one by running `clj -T:build ths` (or `bb gen-ths`) or create your own from scratch.
 
 ### Running
 Run `docker compose up` (add `-d` for detached mode).

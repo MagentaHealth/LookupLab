@@ -1,22 +1,17 @@
 create extension if not exists pg_trgm;
 --;;
-create text search configuration public.magenta (copy = pg_catalog.english);
+create text search configuration public.dfd (copy = pg_catalog.english);
 --;;
-create text search dictionary magenta_ths (
+create text search dictionary dfd_ths (
     template = thesaurus,
-    dictfile = magenta,
+    dictfile = dfd,
     dictionary = english_stem
 );
 --;;
--- create text search dictionary magenta_syn (
---     template = synonym,
---     synonyms = magenta
--- );
---;;
-alter text search configuration magenta
+alter text search configuration dfd
     alter mapping for asciiword, asciihword, hword_asciipart, word, hword, hword_part
-        with magenta_ths, english_stem;
+        with dfd_ths, english_stem;
 --;;
-alter text search configuration magenta
+alter text search configuration dfd
     drop mapping for email, url, url_path;
 --;;

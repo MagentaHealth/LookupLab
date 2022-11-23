@@ -1,3 +1,3 @@
 FROM postgres:14
 
-RUN ln -s ./search_data/magenta.ths "$(pg_config --sharedir)/tsearch_data/magenta.ths"
+RUN ln -s /search_data/dfd.ths "$(pg_config --sharedir)/tsearch_data/dfd.ths"
