@@ -44,10 +44,23 @@
 
 (defn ths [_]
   (println "generating search_data/dfd.ths file from search_data/synonyms.csv")
-  (->> (clojure.string/split (slurp "search_data/synonyms.csv") (re-pattern (System/lineSeparator)))
+  (->> (string/split (slurp "search_data/synonyms.csv") (re-pattern (System/lineSeparator)))
        (rest)
        (map (fn [s] (clojure.string/split s (re-pattern ","))))
        (reduce (fn [res [keyword syn]]
                    (str res syn " : " keyword "\n"))
                "")
        (spit "search_data/dfd.ths")))
+
+(defn syn [_]
+  (println "generating search_data/dfd.syn file from search_data/synonyms.csv")
+  (->> (string/split (slurp "search_data/synonyms.csv") (re-pattern (System/lineSeparator)))
+       (rest)
+       (map (fn [s] (first (clojure.string/split s (re-pattern ",")))))
+       distinct
+       (reduce (fn [res keyword]
+                 (if (string/includes? (string/trim keyword) " ")
+                   res
+                   (str res keyword " " keyword "\n")))
+               "")
+       (spit "search_data/dfd.syn")))

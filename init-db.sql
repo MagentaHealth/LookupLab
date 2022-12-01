@@ -3,6 +3,7 @@
 CREATE ROLE dfd LOGIN PASSWORD 'dfd';
 
 GRANT pg_read_server_files TO dfd;
+GRANT pg_write_server_files TO dfd;
 
 CREATE DATABASE dfd
 WITH OWNER = dfd

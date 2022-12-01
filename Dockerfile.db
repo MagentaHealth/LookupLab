@@ -1,3 +1,4 @@
 FROM postgres:14
 
 RUN ln -s /search_data/dfd.ths "$(pg_config --sharedir)/tsearch_data/dfd.ths"
+RUN ln -s /search_data/dfd.syn "$(pg_config --sharedir)/tsearch_data/dfd.syn"

@@ -47,11 +47,17 @@
            (not-empty))
       (do
         (log/info (str "no results found for query " query ", performing trigram search"))
-        (let [words (->> (query-fn :word-search {:words (string/split query #"\s+")})
-                       (map :word))]
-        (query-fn :tsquery-search
-                  {:select (snip-fn :select-triggers-snip {})
-                   :query  (string/join " | " words)}))))
+        (let [words (->> (query-fn :remove-stop-words {:query query})
+                         :words
+                         (map #(query-fn :word-search {:word % :threshold (if (>= (count %) 5) 0.4 0.25)}))
+                         (mapcat #(if (= 1.0 (:similarity (first %)))
+                                    [(first %)]
+                                    %))
+                         (map :word)
+                         (remove nil?))]
+          (query-fn :tsquery-search
+                    {:select (snip-fn :select-triggers-snip {})
+                     :query  (string/join " | " words)}))))
     (catch Exception e
       (log/error "failed to perform search" e))))
 
@@ -78,3 +84,22 @@
       (http-response/ok)
       (catch Exception e
         (log/error "failed to log click through" e)))))
+
+
+(comment
+  (def query-fn user/query-fn)
+  (def snip-fn user/snip-fn)
+
+
+  (let [query "renew my health card"]
+    (query-fn :remove-stop-words {:query query}))
+
+  (let [query "prescriptin"]
+    (->> (query-fn :remove-stop-words {:query query})
+         :words
+         (map #(query-fn :word-search2 {:word % :threshold (if (>= (count %) 5) 0.4 0.25)}))
+         (mapcat #(if (= 1.0 (:similarity (first %)))
+                    [(first %)]
+                    %))
+         (map :word)
+         (remove nil?))))

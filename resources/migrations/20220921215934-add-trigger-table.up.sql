@@ -4,8 +4,8 @@ story_id int,
 prefix text,
 description text, -- unique?
 is_default boolean,
-search_vector tsvector generated always as (to_tsvector('english', description)) stored
--- use english bc we don't want words to get replaced when generating vectors
+search_vector tsvector generated always as (to_tsvector('dfd_syn', description)) stored
+-- use dfd_syn here so that certain keywords do not get stemmed
 );
 --;;
 copy trigger(story_id, prefix, description, is_default)

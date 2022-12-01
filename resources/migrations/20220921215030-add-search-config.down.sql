@@ -1,3 +1,11 @@
 drop text search configuration if exists dfd;
 --;;
+drop text search configuration if exists dfd_syn;
+--;;
+drop text search configuration if exists dfd_simple;
+--;;
 drop text search dictionary if exists dfd_ths;
+--;;
+drop text search dictionary if exists dfd_syn;
+--;;
+drop text search dictionary if exists dfd_simple;

@@ -32,16 +32,15 @@ from trigger join story on trigger.story_id = story.id
 where search_vector @@ to_tsquery('dfd', :query);
 
 
+-- :name remove-stop-words :? :1
+SELECT tsvector_to_array(to_tsvector('dfd_simple', :query)) as words;
+
+
 -- :name word-search :? :*
-/* :require [clojure.string :as string] */
-select word
+select word, similarity(word, :word)
 from search_word
-where
-/*~
-(string/join " or "
- (for [word (:words params)]
-   (str "similarity(word,'" word "') >= 0.25")))
-~*/
+where similarity(word, :word) >= :threshold
+order by similarity(word, :word) desc;
 
 
 -- :name log-search :! :n
