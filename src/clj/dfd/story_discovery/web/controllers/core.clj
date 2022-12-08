@@ -55,6 +55,7 @@
                                     %))
                          (map :word)
                          (remove nil?))]
+          (log/info (str "\tsearching for " (string/join " | " words)))
           (query-fn :tsquery-search
                     {:select (snip-fn :select-triggers-snip {})
                      :query  (string/join " | " words)}))))
@@ -94,12 +95,16 @@
   (let [query "renew my health card"]
     (query-fn :remove-stop-words {:query query}))
 
-  (let [query "prescriptin"]
-    (->> (query-fn :remove-stop-words {:query query})
-         :words
-         (map #(query-fn :word-search2 {:word % :threshold (if (>= (count %) 5) 0.4 0.25)}))
-         (mapcat #(if (= 1.0 (:similarity (first %)))
-                    [(first %)]
-                    %))
-         (map :word)
-         (remove nil?))))
+  (let [query "follow up on invoice"]
+    (let [words (->> (query-fn :remove-stop-words {:query query})
+                     :words
+                     (map #(query-fn :word-search {:word % :threshold (if (>= (count %) 5) 0.4 0.25)}))
+                     (mapcat #(if (= 1.0 (:similarity (first %)))
+                                [(first %)]
+                                %))
+                     (map :word)
+                     (remove nil?))]
+      (log/info (str "searching for " (string/join " | " words)))
+      (query-fn :tsquery-search
+                {:select (snip-fn :select-triggers-snip {})
+                 :query  (string/join " | " words)}))))

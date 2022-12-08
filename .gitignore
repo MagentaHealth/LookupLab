@@ -20,5 +20,6 @@ modules/
 
 # docker/deployment related
 search_data/dfd.ths
+search_data/dfd.syn
 .db-connection.edn
 db.env

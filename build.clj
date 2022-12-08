@@ -38,7 +38,7 @@
            :main main-cls
            :basis basis}))
 
-(defn all [_]
+(defn app [_]
   (do (clean nil) (prep nil) (uber nil)))
 
 

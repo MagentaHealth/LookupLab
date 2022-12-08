@@ -3,8 +3,9 @@ id serial primary key,
 story_id int,
 prefix text,
 description text, -- unique?
+keywords text,
 is_default boolean,
-search_vector tsvector generated always as (to_tsvector('dfd_syn', description)) stored
+search_vector tsvector generated always as (setweight(setweight(to_tsvector('dfd_syn',description), 'B'), 'A', tsvector_to_array(to_tsvector('dfd_syn', keywords)))) stored
 -- use dfd_syn here so that certain keywords do not get stemmed
 );
 --;;

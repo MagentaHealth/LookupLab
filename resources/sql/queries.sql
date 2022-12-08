@@ -22,14 +22,16 @@ where trigger.is_default = true;
 :snip:select,
       ts_rank(search_vector, plainto_tsquery('dfd', :query))
 from trigger join story on trigger.story_id = story.id
-where search_vector @@ plainto_tsquery('dfd', :query);
+where search_vector @@ plainto_tsquery('dfd', :query)
+order by ts_rank(search_vector, plainto_tsquery('dfd', :query)) desc;
 
 
 -- :name tsquery-search :? :*
 :snip:select,
-      ts_rank(search_vector, plainto_tsquery('dfd', :query))
+      ts_rank(search_vector, to_tsquery('dfd', :query))
 from trigger join story on trigger.story_id = story.id
-where search_vector @@ to_tsquery('dfd', :query);
+where search_vector @@ to_tsquery('dfd', :query)
+order by ts_rank(search_vector, to_tsquery('dfd', :query)) desc;
 
 
 -- :name remove-stop-words :? :1

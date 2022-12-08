@@ -2,7 +2,7 @@
 FROM clojure:openjdk-17 AS build
 WORKDIR /
 COPY . /
-RUN clj -Sforce -T:build all
+RUN clj -Sforce -T:build app
 
 
 FROM azul/zulu-openjdk-alpine:17
