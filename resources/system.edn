@@ -48,7 +48,8 @@
  {:routes #ig/refset :reitit/routes}
 
  :router/core
- {:routes #ig/ref :router/routes}
+ {:routes #ig/ref :router/routes
+  :cors-methods [:get :post]}
 
 
  :db.sql/query-fn

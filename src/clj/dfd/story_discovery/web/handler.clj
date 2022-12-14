@@ -44,4 +44,5 @@
     routes
     {:data {:middleware [[wrap-cors
                           :access-control-allow-origin cors-origins
-                          :access-control-allow-methods cors-methods]]}}))
+                          :access-control-allow-methods cors-methods
+                          :access-control-allow-credentials ["true"]]]}}))
