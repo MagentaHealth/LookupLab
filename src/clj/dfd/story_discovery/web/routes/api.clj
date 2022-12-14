@@ -20,15 +20,17 @@
     {:get controllers/healthcheck!}]
    ["/search"
     {:get {:handler    controllers/search
-           :parameters {:query {:query string?}}}}]
+           :parameters {:query {:query    string?
+                                :audience string?}}}}]
    ["/all-triggers"
     {:get {:handler controllers/list-all-triggers}}]
    ["/default-triggers"
     {:get {:handler controllers/list-default-triggers}}]
    ["/log-click-through"
     {:post {:handler    controllers/log-click-through
-            :parameters {:body {:query   string?
-                                :trigger map?}}}}]])
+            :parameters {:body {:query    string?
+                                :audience string?
+                                :trigger  map?}}}}]])
 
 (defn route-data
   [opts]
