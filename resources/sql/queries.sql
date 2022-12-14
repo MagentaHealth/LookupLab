@@ -1,6 +1,7 @@
 -- :snip select-triggers-snip
 select trigger.prefix,
        trigger.description,
+       trigger.message,
        trigger.story_id,
        story.audience,
        story.description as story,
