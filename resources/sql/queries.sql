@@ -24,7 +24,7 @@ where trigger.is_default = true;
       ts_rank(search_vector, plainto_tsquery('dfd', :query))
 from trigger join story on trigger.story_id = story.id
 where search_vector @@ plainto_tsquery('dfd', :query)
-and story.audience = :audience
+and (story.audience = :audience or story.audience = 'All')
 order by ts_rank(search_vector, plainto_tsquery('dfd', :query)) desc;
 
 
@@ -33,7 +33,7 @@ order by ts_rank(search_vector, plainto_tsquery('dfd', :query)) desc;
       ts_rank(search_vector, to_tsquery('dfd', :query))
 from trigger join story on trigger.story_id = story.id
 where search_vector @@ to_tsquery('dfd', :query)
-and story.audience = :audience
+and (story.audience = :audience or story.audience = 'All')
 order by ts_rank(search_vector, to_tsquery('dfd', :query)) desc;
 
 
