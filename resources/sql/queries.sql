@@ -20,21 +20,45 @@ where trigger.is_default = true;
 
 
 -- :name plain-search :? :*
-:snip:select,
-      ts_rank(search_vector, plainto_tsquery('dfd', :query))
-from trigger join story on trigger.story_id = story.id
-where search_vector @@ plainto_tsquery('dfd', :query)
-and (story.audience = :audience or story.audience = 'All')
-order by ts_rank(search_vector, plainto_tsquery('dfd', :query)) desc;
+select t.*,
+       story.audience,
+       story.description as story,
+       story.destination
+from (select distinct on (trigger.description)
+          trigger.prefix,
+          trigger.description,
+          trigger.message,
+          trigger.story_id,
+          greatest(ts_rank(trigger.search_vector, plainto_tsquery('dfd', :query)), ts_rank(alias.search_vector, plainto_tsquery('dfd', :query))) as rank
+      from trigger
+               left join alias on trigger.id = alias.trigger_id
+      where trigger.search_vector @@ plainto_tsquery('dfd', :query)
+         or alias.search_vector @@ plainto_tsquery('dfd', :query)
+      order by trigger.description, rank desc) t
+join story on t.story_id = story.id
+where (story.audience = :audience or story.audience = 'All')
+order by t.rank desc;
 
 
 -- :name tsquery-search :? :*
-:snip:select,
-      ts_rank(search_vector, to_tsquery('dfd', :query))
-from trigger join story on trigger.story_id = story.id
-where search_vector @@ to_tsquery('dfd', :query)
-and (story.audience = :audience or story.audience = 'All')
-order by ts_rank(search_vector, to_tsquery('dfd', :query)) desc;
+select t.*,
+       story.audience,
+       story.description as story,
+       story.destination
+from (select distinct on (trigger.description)
+          trigger.prefix,
+          trigger.description,
+          trigger.message,
+          trigger.story_id,
+          greatest(ts_rank(trigger.search_vector, to_tsquery('dfd', :query)), ts_rank(alias.search_vector, to_tsquery('dfd', :query))) as rank
+      from trigger
+               left join alias on trigger.id = alias.trigger_id
+      where trigger.search_vector @@ to_tsquery('dfd', :query)
+         or alias.search_vector @@ to_tsquery('dfd', :query)
+      order by trigger.description, rank desc) t
+         join story on t.story_id = story.id
+where (story.audience = :audience or story.audience = 'All')
+order by t.rank desc;
 
 
 -- :name remove-stop-words :? :1
