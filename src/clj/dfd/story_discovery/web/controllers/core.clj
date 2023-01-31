@@ -66,7 +66,7 @@
 
 (defn search
   [{{:keys [query audience]} :params :as request}]
-  (log/info "searching for" audience query)
+  (log/info "searching for" query)
   (let [{:keys [query-fn snip-fn]} (utils/route-data request)
         stripped-query (string/replace query #"want|need|have|require" "")
         results        (search* query-fn snip-fn stripped-query audience)]
@@ -74,7 +74,9 @@
       (query-fn :log-search {:query query :audience audience :results results})
       (catch Exception e
         (log/error "failed to log search" e)))
-    (http-response/ok results)))
+    (->> results
+         (group-by :audience)
+         (http-response/ok))))
 
 (defn log-click-through
   [{{:keys [query audience trigger]} :body-params :as request}]
