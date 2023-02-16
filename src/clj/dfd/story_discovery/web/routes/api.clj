@@ -19,8 +19,9 @@
    ["/health"
     {:get controllers/healthcheck!}]
    ["/search"
-    {:get {:handler    controllers/search
-           :parameters {:query {:query string?}}}}]
+    {:post {:handler    controllers/search
+            :parameters {:body {:query     string?
+                                :audiences [:vector string?]}}}}]
    ["/all-triggers"
     {:get {:handler controllers/list-all-triggers}}]
    ["/default-triggers"

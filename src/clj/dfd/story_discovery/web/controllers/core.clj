@@ -38,13 +38,13 @@
         (log/error "failed to list default triggers" e)))))
 
 (defn search*
-  [query-fn snip-fn query audience]
+  [query-fn snip-fn query audiences]
   (try
     (or
       (->> (query-fn :plain-search
                      {:select   (snip-fn :select-triggers-snip {})
                       :query    query
-                      :audience audience})
+                      :audiences audiences})
            (not-empty))
       (do
         (log/info (str "no results found for query " query ", performing trigram search"))
@@ -60,18 +60,18 @@
           (query-fn :tsquery-search
                     {:select   (snip-fn :select-triggers-snip {})
                      :query    (string/join " | " words)
-                     :audience audience}))))
+                     :audiences audiences}))))
     (catch Exception e
       (log/error "failed to perform search" e))))
 
 (defn search
-  [{{:keys [query audience]} :params :as request}]
-  (log/info "searching for" query)
+  [{{:keys [query audiences]} :body-params :as request}]
+  (log/info "searching for" audiences query)
   (let [{:keys [query-fn snip-fn]} (utils/route-data request)
         stripped-query (string/replace query #"want|need|have|require" "")
-        results        (search* query-fn snip-fn stripped-query audience)]
+        results        (search* query-fn snip-fn stripped-query audiences)]
     (try
-      (query-fn :log-search {:query query :audience audience :results results})
+      (query-fn :log-search {:query query :audiences audiences :results results})
       (catch Exception e
         (log/error "failed to log search" e)))
     (->> results
