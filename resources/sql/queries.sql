@@ -1,5 +1,6 @@
 -- :snip select-triggers-snip
-select trigger.prefix,
+select trigger.id as trigger_id,
+       trigger.prefix,
        trigger.description,
        trigger.message,
        trigger.story_id,
@@ -16,7 +17,8 @@ from trigger join story on trigger.story_id = story.id;
 -- :name list-default-triggers :*
 :snip:select
 from trigger join story on trigger.story_id = story.id
-where trigger.is_default = true;
+where trigger.is_default = true
+order by trigger_id;
 
 
 -- :name plain-search :? :*
