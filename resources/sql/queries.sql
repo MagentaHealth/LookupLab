@@ -22,11 +22,11 @@ order by trigger_id;
 
 
 -- :name plain-search :? :*
-select t.*,
-       story.audience,
-       story.description as story,
-       story.destination
-from (select distinct on (trigger.description)
+select *
+from (select distinct on (story.audience, trigger.description)
+          story.audience,
+          story.description as story,
+          story.destination,
           trigger.prefix,
           trigger.description,
           trigger.message,
@@ -34,20 +34,19 @@ from (select distinct on (trigger.description)
           greatest(ts_rank(trigger.search_vector, plainto_tsquery('dfd', :query)), ts_rank(alias.search_vector, plainto_tsquery('dfd', :query))) as rank
       from trigger
                left join alias on trigger.id = alias.trigger_id
+               join story on trigger.story_id = story.id
       where trigger.search_vector @@ plainto_tsquery('dfd', :query)
-         or alias.search_vector @@ plainto_tsquery('dfd', :query)
-      order by trigger.description, rank desc) t
-join story on t.story_id = story.id
+         or alias.search_vector @@ plainto_tsquery('dfd', :query)) t
 where story.audience in (:v*:audiences)
 order by t.rank desc;
 
 
 -- :name tsquery-search :? :*
-select t.*,
-       story.audience,
-       story.description as story,
-       story.destination
-from (select distinct on (trigger.description)
+select *
+from (select distinct on (story.audience, trigger.description)
+          story.audience,
+          story.description as story,
+          story.destination,
           trigger.prefix,
           trigger.description,
           trigger.message,
@@ -55,9 +54,9 @@ from (select distinct on (trigger.description)
           greatest(ts_rank(trigger.search_vector, to_tsquery('dfd', :query)), ts_rank(alias.search_vector, to_tsquery('dfd', :query))) as rank
       from trigger
                left join alias on trigger.id = alias.trigger_id
+               join story on trigger.story_id = story.id
       where trigger.search_vector @@ to_tsquery('dfd', :query)
-         or alias.search_vector @@ to_tsquery('dfd', :query)
-      order by trigger.description, rank desc) t
+         or alias.search_vector @@ to_tsquery('dfd', :query)) t
 join story on t.story_id = story.id
 where story.audience in (:v*:audiences)
 order by t.rank desc;
