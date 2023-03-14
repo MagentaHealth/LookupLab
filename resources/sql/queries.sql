@@ -37,7 +37,7 @@ from (select distinct on (story.audience, trigger.description)
                join story on trigger.story_id = story.id
       where trigger.search_vector @@ plainto_tsquery('dfd', :query)
          or alias.search_vector @@ plainto_tsquery('dfd', :query)) t
-where story.audience in (:v*:audiences)
+where audience in (:v*:audiences)
 order by t.rank desc;
 
 
@@ -58,7 +58,7 @@ from (select distinct on (story.audience, trigger.description)
       where trigger.search_vector @@ to_tsquery('dfd', :query)
          or alias.search_vector @@ to_tsquery('dfd', :query)) t
 join story on t.story_id = story.id
-where story.audience in (:v*:audiences)
+where audience in (:v*:audiences)
 order by t.rank desc;
 
 
