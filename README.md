@@ -44,3 +44,10 @@ You should also already have a `search_data/dfd.ths` and a `search_data/dfd.syn`
 ### Running
 Run `docker compose up` (add `-d` for detached mode).
 
+## License 
+
+Copyright © 2022-2023 Magenta Health Inc. and Carmen La
+
+This software is distributed under the terms of the GNU Affero General Public License as
+    published by the Free Software Foundation, either version 3 of the
+    License, or (at your option) any later version.
