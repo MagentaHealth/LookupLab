@@ -1,4 +1,4 @@
-# DFD Story Discovery Tool
+# LookupLab: A Story Discovery Tool
 
 ## Prerequisites
 
@@ -46,7 +46,9 @@ Run `docker compose up` (add `-d` for detached mode).
 
 ## License 
 
-Copyright © 2022-2023 Magenta Health Inc. and Carmen La
+Copyright © 2022-2023 [Magenta Health Inc](https://www.magentahealth.ca/).
+
+Authored by [Carmen La](https://carmen.la/).
 
 This software is distributed under the terms of the GNU Affero General Public License as
     published by the Free Software Foundation, either version 3 of the
