@@ -1,5 +1,14 @@
 # LookupLab: A Story Discovery Tool
 
+LookupLab is a query matching tool that can be configured with domain-specific knowledge.
+
+The tool leverages [Postgres Full Text Search](https://www.postgresql.org/docs/current/textsearch.html) and uses a combination of lexical-based and graph-based techniques. By adjusting the configuration, you can inform the tool of semantic nuances within your domain such as:
+
+* equivalent terms / abbreviations _(e.g. "immunization" and "vaccination", "prescription" and "rx")_
+* equivalent queries _(e.g. "I need a prescription renewal" and "I've run out of medication")_
+* important keywords _(e.g. "I want to **follow up** on a previously discussed **medical concern**")_
+
+
 ## Prerequisites
 
 You will need the following to compile and run the application.
@@ -46,8 +55,7 @@ Run `docker compose up` (add `-d` for detached mode).
 
 ## License 
 
-Copyright © 2022-2023 [Magenta Health Inc](https://www.magentahealth.ca/).
-
+Copyright &copy; 2022-2023 [Magenta Health Inc](https://www.magentahealth.ca/).<br>
 Authored by [Carmen La](https://carmen.la/).
 
 This software is distributed under the terms of the GNU Affero General Public License as
