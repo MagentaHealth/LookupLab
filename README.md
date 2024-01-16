@@ -53,6 +53,13 @@ You should also already have a `search_data/dfd.ths` and a `search_data/dfd.syn`
 ### Running
 Run `docker compose up` (add `-d` for detached mode).
 
+### Rebuilding Image
+
+```
+docker compose down
+docker compose up -d --build
+```
+
 ## License 
 
 Copyright &copy; 2022-2023 [Magenta Health Inc](https://www.magentahealth.ca/).<br>
