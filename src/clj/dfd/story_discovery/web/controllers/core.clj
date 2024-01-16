@@ -60,8 +60,7 @@
   (try
     (or
       (->> (query-fn :plain-search
-                     {:select   (snip-fn :select-triggers-snip {})
-                      :query    query
+                     {:query    query
                       :audiences audiences})
            (not-empty))
       (do
@@ -76,8 +75,7 @@
                          (remove nil?))]
           (log/info (str "\tsearching for " (string/join " | " words)))
           (query-fn :tsquery-search
-                    {:select   (snip-fn :select-triggers-snip {})
-                     :query    (string/join " | " words)
+                    {:query    (string/join " | " words)
                      :audiences audiences}))))
     (catch Exception e
       (log/error "failed to perform search" e))))
@@ -86,7 +84,7 @@
   [{{:keys [query audiences]} :body-params :as request}]
   (log/info "searching for" audiences query)
   (let [{:keys [query-fn snip-fn]} (utils/route-data request)
-        stripped-query (string/replace query #"want|need|have|require" "")
+        stripped-query (string/replace query #"want|need|have|require|i'm" "")
         results        (search* query-fn snip-fn stripped-query audiences)]
     (try
       (query-fn :log-search {:query query :audiences audiences :results results})
