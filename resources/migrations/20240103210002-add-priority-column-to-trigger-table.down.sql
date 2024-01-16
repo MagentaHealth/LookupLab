@@ -1,0 +1,1 @@
+alter table trigger drop column if exists priority;

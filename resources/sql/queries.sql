@@ -49,6 +49,7 @@ from (select distinct on (story.audience, trigger.description)
           trigger.description,
           trigger.message,
           trigger.story_id,
+          trigger.priority,
           greatest(ts_rank(trigger.search_vector, plainto_tsquery('dfd', :query)), ts_rank(alias.search_vector, plainto_tsquery('dfd', :query))) as rank
       from trigger
                left join alias on trigger.id = alias.trigger_id
@@ -56,7 +57,7 @@ from (select distinct on (story.audience, trigger.description)
       where trigger.search_vector @@ plainto_tsquery('dfd', :query)
          or alias.search_vector @@ plainto_tsquery('dfd', :query)) t
 where audience in (:v*:audiences)
-order by t.rank desc;
+order by (101 - coalesce(priority, 100)) * rank desc;
 
 
 -- :name tsquery-search :? :*
@@ -69,6 +70,7 @@ from (select distinct on (story.audience, trigger.description)
           trigger.description,
           trigger.message,
           trigger.story_id,
+          trigger.priority,
           greatest(ts_rank(trigger.search_vector, to_tsquery('dfd', :query)), ts_rank(alias.search_vector, to_tsquery('dfd', :query))) as rank
       from trigger
                left join alias on trigger.id = alias.trigger_id
@@ -76,7 +78,7 @@ from (select distinct on (story.audience, trigger.description)
       where trigger.search_vector @@ to_tsquery('dfd', :query)
          or alias.search_vector @@ to_tsquery('dfd', :query)) t
 where audience in (:v*:audiences)
-order by t.rank desc;
+order by (101 - coalesce(priority, 100)) * rank desc;
 
 
 -- :name remove-stop-words :? :1
