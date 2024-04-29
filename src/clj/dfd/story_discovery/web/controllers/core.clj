@@ -84,7 +84,10 @@
   [{{:keys [query audiences]} :body-params :as request}]
   (log/info "searching for" audiences query)
   (let [{:keys [query-fn snip-fn]} (utils/route-data request)
-        stripped-query (string/replace query #"want|need|have|require|i'm" "")
+        words-to-remove #{"want" "need" "have" "require" "i'm" "im"}
+        stripped-query (->> (string/split query #"\s+")
+                            (filter #(not (words-to-remove %)))
+                            (string/join " "))
         results        (search* query-fn snip-fn stripped-query audiences)]
     (try
       (query-fn :log-search {:query query :audiences audiences :results results})
